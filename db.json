@@ -1,0 +1,110 @@
+{
+    "services":[
+        {
+            "id":"1",
+            "name":"oil change",
+            "price":"50",
+            "duration":"40 minutes"
+
+        },
+        {
+            "id":"2",
+            "name":"tire replacement",
+            "price":"200",
+            "duration":"1 hour"
+        },
+        {
+            "id":"3",
+            "name":"brake inspection",
+            "price":"30",
+            "duration":"20 minutes"
+
+        },
+        {
+            "id":"4",
+            "name":"battery replacement",
+            "price":"100",
+            "duration":"30 minutes"
+        
+        },
+        {
+            "id":"5",
+            "name":"oil flush",
+            "price":"70",
+            "duration":"45 minutes"
+        },
+        {
+            "id":"6",
+            "name":"Engine diagnostics",
+            "price":"150",
+            "duration":"1 hour"
+        }
+
+    ],
+    "appointments":[
+        {
+            "id":"1",
+            "service_id":"1",
+            "date":"2024-12-20",
+            "time":"10:00 AM",
+            "customer":"Lazarus Weston"
+        },
+        {
+            "id":"2",
+            "service_id":"2",
+            "date":"2024-12-20",
+            "time":"11:00 AM",
+            "customer":"Happiness Maina"
+
+        },
+        {
+            "id":"3",
+            "service_id":"3",
+            "date":"2024-12-20",
+            "time":"12:00 PM",
+            "customer":"Jaimie Fraer"
+
+        },
+        {
+            "id":"4",
+            "service_id":"4",
+            "date":"2024-12-20",
+            "time":"1:00 PM",
+            "customer":"Frank  Mcneill"
+
+        }
+
+
+    ],
+    "reviews":[
+        {
+        "id":"1",
+        "serviceid":"1",
+        "review":"great break inspection!very thorough and professional",
+        "rating":"5"
+
+    },
+    {
+        "id":"2",
+        "serviceid":"2",
+        "review":"excellent service, very friendly and helpful",
+        "rating":"5"
+
+    },
+    {
+        "id":"3",
+        "serviceid":"3",
+        "review":"excellent service, very friendly and helpful",
+        "rating":"5"
+    },
+    {
+        "id":"4",
+        "serviceid":"4",
+        "review":"excellent service, very friendly and helpful",
+        "rating":"5"
+    }
+    
+
+] 
+
+}
