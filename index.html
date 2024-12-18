@@ -9,14 +9,60 @@
 <body>
     <header>
         <h1>Auto Repair Shop</h1>
+        <img src="machanic.jpeg">
         <input type="text" id="search-bar" placeholder="search services...">
 
     </header>
     <main>
-        <section id="service container"></section>
-        <section id ="form container"></section>
-        <section id="review container"></section>
+        <section id="service container">
+            <h2>Our Services</h2>
+            <img src="car repair.jpeg" alt="car repair shop">
+            <div class="service-list" >
+
+            </div>
+        </section>
+        
+        <section id ="form container">
+            <h2>Book an Appointment</h2>
+            <div class="Appointment list">
+
+            </div>
+        </section>
+
+        <section id="review container">
+            <h2>Customers reviews</h2>
+            <div class="review-list">
+
+            </div>
+            <h3>leave a review</h3>
+            <form id="review-form">
+                <label for="review-services">Services</label>
+                <select id="review-services" required>
+                    <option value="" disabled selected>Select a service</option>
+                </select>
+                <label for="review-text">Your Review</label>
+                <textarea id="review-text" rows="=4" placeholder="share your experience ..." required></textarea>
+                <label for="review-rating">Rating</label>
+                <input type="number" id="review-rating" min="1" max="5" required>
+                <button type="submit">Submit Review</button>
+            </form>
+
+        </section>
     </main>
+    <footer>
+        <section id="contact-container">
+            <h2>Contact Us</h2>
+            <img src="Car repair.jpeg" alt="car repair shop">
+            <p>For inquiries or assistance, feel free to reach out:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:support@autorepairshop.com?subject=Inquiry from Auto Repair Shop Website">support@autorepairshop.com</a></li>
+                
+            </ul>
+            <button id="contact-button">
+                <a href="mailto:autorepairshop.comsubject=Inquiry from Auto Repair Shop Website" target="_blank">Contact Us</a>
+            </button>
+        </section>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
