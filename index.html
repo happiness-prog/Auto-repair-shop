@@ -3,66 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Auto Repair Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Auto Repair Shop</h1>
-        <img src="machanic.jpeg">
-        <input type="text" id="search-bar" placeholder="search services...">
-
+        <div class="header-top">
+            <h1>Auto Repair Shop</h1>
+            <button id="theme-toggle">🌙</button>
+        </div>
+        <img src="machanic.jpeg" alt="mechanic at work">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search services...">
+        </div>
     </header>
+
     <main>
-        <section id="service container">
+        <section id="service-container">
             <h2>Our Services</h2>
-            <img src="car repair.jpeg" alt="car repair shop">
-            <div class="service-list" >
-
+            <div class="service-controls">
+                <div class="price-filter">
+                    <label>Max Price: $<span id="price-value">200</span></label>
+                    <input type="range" id="price-range" min="0" max="200" value="200">
+                </div>
+                <div class="sort-container">
+                    <select id="sort-services">
+                        <option value="name">Sort by Name</option>
+                        <option value="price">Sort by Price</option>
+                        <option value="duration">Sort by Duration</option>
+                    </select>
+                </div>
             </div>
+            <img src="Car repair.jpeg" alt="car repair shop">
+            <div class="service-list"></div>
         </section>
-        
-        <section id ="form container">
+
+        <section id="form-container">
             <h2>Book an Appointment</h2>
-            <div class="Appointment list">
+            <form id="appointment-form">
+                <label for="appointment-services">Choose a service:</label>
+                <select id="appointment-services" required>
+                    <option value="" disabled selected>Select a service</option>
+                </select>
 
-            </div>
+                <label for="customer-name">Your Name:</label>
+                <input type="text" id="customer-name" placeholder="Enter your name" required>
+
+                <label for="appointment-date">Date:</label>
+                <input type="date" id="appointment-date" required>
+
+                <label for="appointment-time">Time:</label>
+                <input type="time" id="appointment-time" required>
+
+                <button type="submit">Book Appointment</button>
+            </form>
+            <div class="appointment-list"></div>
         </section>
 
-        <section id="review container">
-            <h2>Customers reviews</h2>
-            <div class="review-list">
-
-            </div>
-            <h3>leave a review</h3>
+        <section id="review-container">
+            <h2>Customer Reviews</h2>
+            <div class="review-list"></div>
+            
+            <h3>Leave a Review</h3>
             <form id="review-form">
-                <label for="review-services">Services</label>
+                <label for="review-services">Service:</label>
                 <select id="review-services" required>
                     <option value="" disabled selected>Select a service</option>
                 </select>
-                <label for="review-text">Your Review</label>
-                <textarea id="review-text" rows="=4" placeholder="share your experience ..." required></textarea>
-                <label for="review-rating">Rating</label>
+
+                <label for="review-text">Your Review:</label>
+                <textarea id="review-text" rows="4" placeholder="Share your experience..." required></textarea>
+
+                <label for="review-rating">Rating:</label>
                 <input type="number" id="review-rating" min="1" max="5" required>
+
                 <button type="submit">Submit Review</button>
             </form>
-
         </section>
     </main>
+
     <footer>
         <section id="contact-container">
             <h2>Contact Us</h2>
-            <img src="Car repair.jpeg" alt="car repair shop">
+            <img src="Suspensions-Repair-Logo.jpeg" alt="car repair shop logo">
             <p>For inquiries or assistance, feel free to reach out:</p>
             <ul>
-                <li><strong>Email:</strong> <a href="mailto:support@autorepairshop.com?subject=Inquiry from Auto Repair Shop Website">support@autorepairshop.com</a></li>
-                
+                <li>
+                    <strong>Email:</strong> 
+                    <a href="mailto:support@autorepairshop.com?subject=Inquiry from Auto Repair Shop Website">
+                        support@autorepairshop.com
+                    </a>
+                </li>
             </ul>
             <button id="contact-button">
-                <a href="mailto:autorepairshop.comsubject=Inquiry from Auto Repair Shop Website" target="_blank">Contact Us</a>
+                <a href="mailto:support@autorepairshop.com?subject=Inquiry from Auto Repair Shop Website" target="_blank">
+                    Contact Us
+                </a>
             </button>
         </section>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

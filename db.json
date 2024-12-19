@@ -1,110 +1,191 @@
 {
-    "services":[
-        {
-            "id":"1",
-            "name":"oil change",
-            "price":"50",
-            "duration":"40 minutes"
-
-        },
-        {
-            "id":"2",
-            "name":"tire replacement",
-            "price":"200",
-            "duration":"1 hour"
-        },
-        {
-            "id":"3",
-            "name":"brake inspection",
-            "price":"30",
-            "duration":"20 minutes"
-
-        },
-        {
-            "id":"4",
-            "name":"battery replacement",
-            "price":"100",
-            "duration":"30 minutes"
-        
-        },
-        {
-            "id":"5",
-            "name":"oil flush",
-            "price":"70",
-            "duration":"45 minutes"
-        },
-        {
-            "id":"6",
-            "name":"Engine diagnostics",
-            "price":"150",
-            "duration":"1 hour"
-        }
-
-    ],
-    "appointments":[
-        {
-            "id":"1",
-            "service_id":"1",
-            "date":"2024-12-20",
-            "time":"10:00 AM",
-            "customer":"Lazarus Weston"
-        },
-        {
-            "id":"2",
-            "service_id":"2",
-            "date":"2024-12-20",
-            "time":"11:00 AM",
-            "customer":"Happiness Maina"
-
-        },
-        {
-            "id":"3",
-            "service_id":"3",
-            "date":"2024-12-20",
-            "time":"12:00 PM",
-            "customer":"Jaimie Fraer"
-
-        },
-        {
-            "id":"4",
-            "service_id":"4",
-            "date":"2024-12-20",
-            "time":"1:00 PM",
-            "customer":"Frank  Mcneill"
-
-        }
-
-
-    ],
-    "reviews":[
-        {
-        "id":"1",
-        "serviceid":"1",
-        "review":"great break inspection!very thorough and professional",
-        "rating":"5"
-
+  "services": [
+    {
+      "id": "1",
+      "name": "oil change",
+      "price": "50",
+      "duration": "40 minutes"
     },
     {
-        "id":"2",
-        "serviceid":"2",
-        "review":"excellent service, very friendly and helpful",
-        "rating":"5"
-
+      "id": "2",
+      "name": "tire replacement",
+      "price": "200",
+      "duration": "1 hour"
     },
     {
-        "id":"3",
-        "serviceid":"3",
-        "review":"excellent service, very friendly and helpful",
-        "rating":"5"
+      "id": "3",
+      "name": "brake inspection",
+      "price": "30",
+      "duration": "20 minutes"
     },
     {
-        "id":"4",
-        "serviceid":"4",
-        "review":"excellent service, very friendly and helpful",
-        "rating":"5"
+      "id": "4",
+      "name": "battery replacement",
+      "price": "100",
+      "duration": "30 minutes"
+    },
+    {
+      "id": "5",
+      "name": "oil flush",
+      "price": "70",
+      "duration": "45 minutes"
+    },
+    {
+      "id": "6",
+      "name": "Engine diagnostics",
+      "price": "150",
+      "duration": "1 hour"
     }
-    
-
-] 
-
+  ],
+  "appointments": [
+    {
+      "id": "1",
+      "service_id": "1",
+      "date": "2024-12-20",
+      "time": "10:00 AM",
+      "customer": "Lazarus Weston"
+    },
+    {
+      "id": "2",
+      "service_id": "2",
+      "date": "2024-12-20",
+      "time": "11:00 AM",
+      "customer": "Happiness Maina"
+    },
+    {
+      "id": "3",
+      "service_id": "3",
+      "date": "2024-12-20",
+      "time": "12:00 PM",
+      "customer": "Jaimie Fraer"
+    },
+    {
+      "id": "4",
+      "service_id": "4",
+      "date": "2024-12-20",
+      "time": "1:00 PM",
+      "customer": "Frank  Mcneill"
+    },
+    {
+      "id": "1734590308106",
+      "service_id": "4",
+      "service_name": "battery replacement - $100 (30 minutes)",
+      "date": "2022-12-21",
+      "time": "10:00",
+      "customer": "maina"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "serviceid": "1",
+      "review": "great break inspection!very thorough and professional",
+      "rating": "5"
+    },
+    {
+      "id": "2",
+      "serviceid": "2",
+      "review": "excellent service, very friendly and helpful",
+      "rating": "5"
+    },
+    {
+      "id": "3",
+      "serviceid": "3",
+      "review": "excellent service, very friendly and helpful",
+      "rating": "5"
+    },
+    {
+      "id": "4",
+      "serviceid": "4",
+      "review": "excellent service, very friendly and helpful",
+      "rating": "5"
+    },
+    {
+      "id": "1734590434077",
+      "serviceid": "3",
+      "review": "fantastic ",
+      "rating": "2"
+    }
+  ],
+  "company": {
+    "name": "Happy Auto Services",
+    "tagline": "professional Auto Care You Can Trust",
+    "address": "123 Mechanic street",
+    "hours": {
+      "monday": "9am-5pm",
+      "tuesday": "9am-5pm",
+      "wednesday": "9am-5pm",
+      "thursday": "9am-5pm",
+      "friday": "9am-5pm",
+      "saturday": "9am-5pm",
+      "sunday": "closed"
+    }
+  },
+  "staff": [
+    {
+      "id": 1,
+      "name": "Mike Johnson",
+      "title": "Master Technician",
+      "specialties": ["Engine Repair", "Diagnostics"],
+      "certifications": ["ASE Master Technician", "BMW Certified"],
+      "yearsExperience": 15
+    },
+    {
+      "id": 2,
+      "name": "Sarah Martinez",
+      "title": "Service Manager",
+      "specialties": ["Customer Service", "Service Planning"],
+      "certifications": ["Automotive Service Excellence (ASE)"],
+      "yearsExperience": 8
+    },
+    {
+      "id": 3,
+      "name": "David Chen",
+      "title": "Brake Specialist",
+      "specialties": ["Brake Systems", "Suspension"],
+      "certifications": ["ASE Brake Specialist"],
+      "yearsExperience": 10
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "title": "Spring Maintenance Special",
+      "description": "Get 10% off any maintenance service over $100",
+      "validUntil": "2024-05-31",
+      "discountType": "percentage",
+      "discountAmount": 10
+    },
+    {
+      "id": 2,
+      "title": "New Customer Discount",
+      "description": "First-time customers receive $25 off any service",
+      "validUntil": "2024-12-31",
+      "discountType": "fixed",
+      "discountAmount": 25
+    }
+  ],
+  "available_slots": {
+    "timeSlots": [
+      "8:00 AM",
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM"
+    ],
+    "requiredInfo": [
+      "name",
+      "phone",
+      "email",
+      "vehicle_make",
+      "vehicle_model",
+      "vehicle_year",
+      "service_type",
+      "preferred_date",
+      "preferred_time"
+    ]
+  }
 }
