@@ -1,229 +1,231 @@
-// DOM Elements
 const serviceList = document.querySelector('.service-list');
 const appointmentServices = document.querySelector('#appointment-services');
 const reviewServices = document.querySelector('#review-services');
-const appointmentList = document.querySelector('.Appointment list');
-const reviewList = document.querySelector('.review-list');
-const searchBar = document.querySelector('#search-bar');
+const staffList = document.querySelector('.staff-list');
+const promotionsList = document.querySelector('.promotions-list');
+const preferredTime = document.querySelector('#preferred-time');
 const appointmentForm = document.querySelector('#appointment-form');
 const reviewForm = document.querySelector('#review-form');
-const themeToggle = document.querySelector('#theme-toggle');
-const priceRange = document.querySelector('#price-range');
-const priceValue = document.querySelector('#price-value');
-const sortSelect = document.querySelector('#sort-services');
+const appointmentList = document.querySelector('.appointment-list');
+const reviewList = document.querySelector('.review-list');
+let services = [];
 
-// Global state to store the original data
-let globalServices = [];
-
-// Fetch data from db.json
-async function fetchData() {
-    try {
-        const response = await fetch('http://localhost:3000/db.json');
-        const data = await response.json();
-        globalServices = data.services; // Store services in global state
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        serviceList.innerHTML = '<p>Error loading services. Please try again later.</p>';
-    }
+function fetchData(url) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .catch(error => console.error('Error fetching data:', error));
 }
 
-// Display Services
-async function displayServices() {
-    const data = await fetchData();
-    if (!data) return;
-
-    displayFilteredServices(data.services);
-
-    // Populate service dropdowns
-    const serviceOptions = data.services.map(service => 
-        `<option value="${service.id}">${service.name} - $${service.price} (${service.duration})</option>`
-    ).join('');
-    
-    appointmentServices.innerHTML = '<option value="" disabled selected>Select a service</option>' + serviceOptions;
-    reviewServices.innerHTML = '<option value="" disabled selected>Select a service</option>' + serviceOptions;
+function postData(url, data) {
+    return fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+    })
+    .catch(error => console.error('Error posting data:', error));
 }
 
-// Display filtered/sorted services
-function displayFilteredServices(services) {
-    serviceList.innerHTML = services.map(service => `
-        <div class="service-card">
-            <h3>${service.name}</h3>
-            <p>Price: $${service.price}</p>
-            <p>Duration: ${service.duration}</p>
-        </div>
-    `).join('');
+function displayServices() {
+    fetchData('http://localhost:3000/services').then(data => {
+        if (!data) return;
+        services = data;
+
+        serviceList.innerHTML = data.map(service => `
+            <div class="service-card">
+                <img src="${service.image || 'placeholder.jpg'}" alt="${service.name}" />
+                <h3>${service.name}</h3>
+                <p>Price: $${service.price}</p>
+                <p>Duration: ${service.duration}</p>
+            </div>
+        `).join('');
+
+        const serviceOptions = data.map(service => 
+            `<option value="${service.id}">${service.name}</option>`
+        ).join('');
+
+        appointmentServices.innerHTML = '<option value="" disabled selected>Select a service</option>' + serviceOptions;
+        reviewServices.innerHTML = '<option value="" disabled selected>Select a service</option>' + serviceOptions;
+    });
 }
 
-// Display Appointments
-async function displayAppointments() {
-    const data = await fetchData();
-    if (!data) return;
+function displayStaff() {
+    fetchData('http://localhost:3000/staff').then(staff => {
+        if (!staff) return;
 
-    appointmentList.innerHTML = data.appointments.map(appointment => `
-        <div class="appointment-card">
-            <p>Customer: ${appointment.customer}</p>
-            <p>Date: ${appointment.date}</p>
-            <p>Time: ${appointment.time}</p>
-            <p>Service: ${appointment.service_name || getServiceName(appointment.service_id)}</p>
-        </div>
-    `).join('');
+        staffList.innerHTML = staff.map(member => `
+            <div class="staff-card">
+                <img src="${member.image || 'placeholder.jpg'}" alt="${member.name}" />
+                <h3>${member.name}</h3>
+                <p>Title: ${member.title}</p>
+                <p>Specialties: ${member.specialties.join(', ')}</p>
+                <p>Experience: ${member.years_experience} years</p>
+            </div>
+        `).join('');
+    });
 }
 
-// Helper function to get service name
+function displayPromotions() {
+    fetchData('http://localhost:3000/promotions').then(promotions => {
+        if (!promotions) return;
+
+        promotionsList.innerHTML = promotions.map(promotion => `
+            <div class="promotion-card">
+                <h3>${promotion.title}</h3>
+                <p>${promotion.description}</p>
+                <p>Valid Until: ${promotion.valid_until}</p>
+            </div>
+        `).join('');
+    });
+}
+
+function populateTimeSlots() {
+    fetchData('http://localhost:3000/available_slots').then(data => {
+        if (!data) return;
+
+        preferredTime.innerHTML = '<option value="" disabled selected>Select a time</option>' +
+            data.time_slots.map(slot => `<option value="${slot}">${slot}</option>`).join('');
+    });
+}
+
+function displayAppointments() {
+    fetchData('http://localhost:3000/appointments').then(appointments => {
+        if (!appointments) return;
+
+        appointmentList.innerHTML = appointments.map(appointment => `
+            <div class="appointment-card">
+                <h4>Customer: ${appointment.customer}</h4>
+                <p>Service: ${getServiceName(appointment.service_id)}</p>
+                <p>Date: ${appointment.date}</p>
+                <p>Time: ${appointment.time}</p>
+            </div>
+        `).join('');
+    }).catch(error => console.error('Error fetching appointments:', error));
+}
+
 function getServiceName(serviceId) {
-    const service = globalServices.find(s => s.id === serviceId);
+    const service = services.find(s => s.id === serviceId);
     return service ? service.name : 'Unknown Service';
 }
 
-// Display Reviews
-async function displayReviews() {
-    const data = await fetchData();
-    if (!data) return;
-
-    reviewList.innerHTML = data.reviews.map(review => `
-        <div class="review-card">
-            <p>Service: ${getServiceName(review.serviceid)}</p>
-            <p>${review.review}</p>
-            <div class="rating">Rating: ${'★'.repeat(parseInt(review.rating))}${'☆'.repeat(5-parseInt(review.rating))}</div>
+function addAppointmentToUI(appointment) {
+    appointmentList.innerHTML += `
+        <div class="appointment-card">
+            <h4>Customer: ${appointment.customerName}</h4>
+            <p>Service: ${appointment.serviceName}</p>
+            <p>Date: ${appointment.preferredDate}</p>
+            <p>Time: ${appointment.preferredTime}</p>
         </div>
-    `).join('');
+    `;
 }
 
-// Event Listeners
+function addReviewToUI(review) {
+    reviewList.innerHTML += `
+        <div class="review-card">
+            <h4>${review.serviceName}</h4>
+            <p>${review.text}</p>
+            <p>Rating: ${review.rating} / 5</p>
+        </div>
+    `;
+}
 
-// 1. Search functionality
-searchBar.addEventListener('input', () => {
-    if (!globalServices.length) return;
+function displayExistingReviews() {
+    fetchData('http://localhost:3000/reviews').then(reviews => {
+        if (!reviews) return;
+        
+        reviewList.innerHTML = reviews.map(review => `
+            <div class="review-card">
+                <h4>${review.serviceName}</h4>
+                <p>${review.text}</p>
+                <p>Rating: ${review.rating} / 5</p>
+            </div>
+        `).join('');
+    });
+}
 
-    const searchTerm = searchBar.value.toLowerCase();
-    const filteredServices = globalServices.filter(service => 
-        service.name.toLowerCase().includes(searchTerm)
-    );
-    
-    displayFilteredServices(filteredServices);
-});
+function setupAppointmentForm() {
+    appointmentForm.addEventListener('submit', event => {
+        event.preventDefault();
 
-// 2. Price range filter
-priceRange.addEventListener('input', () => {
-    if (!globalServices.length) return;
+        const appointmentData = {
+            service_id: parseInt(appointmentServices.value, 10),
+            serviceName: appointmentServices.options[appointmentServices.selectedIndex].text,
+            customer: document.querySelector('#customer-name').value,
+            date: document.querySelector('#preferred-date').value,
+            time: preferredTime.value,
+        };
 
-    priceValue.textContent = priceRange.value;
-    const maxPrice = parseInt(priceRange.value);
-    
-    const filteredServices = globalServices.filter(service => 
-        parseInt(service.price) <= maxPrice
-    );
-    
-    displayFilteredServices(filteredServices);
-});
-
-// 3. Sort services
-sortSelect.addEventListener('change', () => {
-    if (!globalServices.length) return;
-
-    const services = [...globalServices];
-    
-    switch(sortSelect.value) {
-        case 'name':
-            services.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-        case 'price':
-            services.sort((a, b) => parseInt(a.price) - parseInt(b.price));
-            break;
-        case 'duration':
-            services.sort((a, b) => {
-                const timeA = parseInt(a.duration);
-                const timeB = parseInt(b.duration);
-                return timeA - timeB;
+        postData('http://localhost:3000/appointments', appointmentData)
+            .then(appointment => {
+                addAppointmentToUI(appointment);
+                appointmentForm.reset();
+                alert('Appointment successfully booked!');
+            })
+            .catch(error => {
+                console.error('Error booking appointment:', error);
+                alert('Failed to book the appointment. Please try again.');
             });
-            break;
-    }
-    
-    displayFilteredServices(services);
+    });
+}
+
+function setupReviewForm() {
+    reviewForm.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const reviewData = {
+            service_id: parseInt(reviewServices.value, 10),
+            serviceName: reviewServices.options[reviewServices.selectedIndex].text,
+            text: document.querySelector('#review-text').value,
+            rating: parseInt(document.querySelector('#review-rating').value, 10),
+        };
+
+        postData('http://localhost:3000/reviews', reviewData)
+            .then(review => {
+                addReviewToUI(review);
+                reviewForm.reset();
+            })
+            .catch(error => console.error('Error submitting review:', error));
+    });
+}
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") {
+  body.classList.add("dark-theme");
+  themeToggle.textContent = "☀️"; 
+} else {
+  themeToggle.textContent = "🌙"; 
+}
+
+themeToggle.addEventListener("click", () => {
+  
+  body.classList.toggle("dark-theme");
+
+  if (body.classList.contains("dark-theme")) {
+    localStorage.setItem("theme", "dark");
+    themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggle.textContent = "🌙";
+  }
 });
 
-// 4. Theme toggle
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
 
-// 5. Appointment form submission
-appointmentForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const newAppointment = {
-        id: Date.now().toString(),
-        service_id: appointmentServices.value,
-        service_name: appointmentServices.options[appointmentServices.selectedIndex].text,
-        date: document.querySelector('#appointment-date').value,
-        time: document.querySelector('#appointment-time').value,
-        customer: document.querySelector('#customer-name').value
-    };
-
-    try {
-        const response = await fetch('http://localhost:3000/appointments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newAppointment)
-        });
-
-        if (response.ok) {
-            displayAppointments();
-            appointmentForm.reset();
-            alert('Appointment booked successfully!');
-        }
-    } catch (error) {
-        console.error('Error booking appointment:', error);
-        alert('Failed to book appointment. Please try again.');
-    }
-});
-
-// 6. Review form submission
-reviewForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const newReview = {
-        id: Date.now().toString(),
-        serviceid: reviewServices.value,
-        review: document.querySelector('#review-text').value,
-        rating: document.querySelector('#review-rating').value
-    };
-
-    try {
-        const response = await fetch('http://localhost:3000/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newReview)
-        });
-
-        if (response.ok) {
-            displayReviews();
-            reviewForm.reset();
-            alert('Review submitted successfully!');
-        }
-    } catch (error) {
-        console.error('Error submitting review:', error);
-        alert('Failed to submit review. Please try again.');
-    }
-});
-
-// Initialize page
-window.addEventListener('DOMContentLoaded', () => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeToggle.textContent = '☀️';
-    }
-    
+document.addEventListener('DOMContentLoaded', () => {
     displayServices();
+    displayStaff();
+    displayPromotions();
+    populateTimeSlots();
     displayAppointments();
-    displayReviews();
+    setupAppointmentForm();
+    setupReviewForm();
+    displayExistingReviews();  
 });

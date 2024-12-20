@@ -1,95 +1,151 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Body Styling */
 body {
-  background-color: #f4f4f4; /* Light grey background for a subtle look */
-  color: #333; /* Dark text for good readability */
+  font-size: 16px;
   line-height: 1.6;
+  color: #333;
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Header Styling */
 header {
-  background-color: #2a2a2a; /* Dark grey for professionalism */
-  color: #f4f4f4; /* Light text to contrast */
   text-align: center;
   padding: 20px;
-  position: relative;
-}
-
-header h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
+  background: linear-gradient(to right, #00aaff, #0044cc);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header img {
-  max-width: 100px; /* Keep the image compact */
+  max-width: 100%;
   height: auto;
-  display: block;
-  margin: 10px auto;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-top h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header-top p {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: #fff;
+  color: #0044cc;
+}
+
+.search-container {
+  margin: 20px auto;
+  max-width: 400px;
 }
 
 #search-bar {
-  width: 50%;
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 10px auto;
-  display: block;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
-/* Main Section Styling */
+#search-bar:focus {
+  border-color: #00aaff;
+}
+
 main {
   padding: 20px;
 }
 
-h2 {
-  font-size: 1.8em;
-  margin-bottom: 10px;
-  color: #444;
-}
-
 section {
-  margin-bottom: 30px;
-  padding: 15px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 
-/* Service Image */
-#service-container img, 
-#contact-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+section h2 {
+  font-size: 2rem;
+  color: #0044cc;
+  text-align: center;
+  margin-bottom: 15px;
+  position: relative;
 }
 
-/* Appointment List Styling */
-.Appointment.list {
-  padding: 10px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+section h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #00aaff;
+  margin: 10px auto;
   border-radius: 5px;
 }
 
-/* Review Section */
+.service-list,
+.staff-list,
+.promotions-list,
+.appointment-list,
 .review-list {
-  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.service-card,
+.staff-card,
+.promotion-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img,
+.staff-card img {
+  max-width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.service-card:hover,
+.staff-card:hover,
+.promotion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 form {
-  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 form label {
@@ -98,88 +154,118 @@ form label {
   font-weight: bold;
 }
 
-form input, 
-form textarea, 
-form select {
+form input,
+form select,
+form textarea,
+form button {
   width: 100%;
-  padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #00aaff;
 }
 
 form button {
-  background-color: #444;
-  color: #f4f4f4;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  background: #0044cc;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 form button:hover {
-  background-color: #666;
+  background: #00aaff;
 }
 
-/* Footer Section */
 footer {
-  background-color: #2a2a2a;
-  color: #f4f4f4;
+  background: #0044cc;
+  color: #fff;
   text-align: center;
   padding: 20px;
+  margin-top: 20px;
 }
 
-footer img {
-  max-width: 150px;
-  height: auto;
-  display: block;
-  margin: 10px auto;
-  border-radius: 10px;
-}
-
-footer p, footer ul {
-  margin: 10px 0;
-}
-
-footer ul li a {
-  color: #f4f4f4;
+footer a {
+  color: #00aaff;
   text-decoration: none;
-  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-footer ul li a:hover {
-  text-decoration: underline;
+footer a:hover {
+  color: #fff;
 }
 
-footer button {
-  background-color: #444;
-  color: #f4f4f4;
-  border: none;
+#contact-button {
+  margin-top: 10px;
   padding: 10px 20px;
-  border-radius: 5px;
+  background: #00aaff;
+  border: none;
+  color: #fff;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-footer button:hover {
-  background-color: #666;
+#contact-button:hover {
+  background: #fff;
+  color: #0044cc;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-  header h1 {
-      font-size: 2em;
+  .service-list,
+  .staff-list,
+  .promotions-list {
+    flex-direction: column;
+    align-items: center;
   }
 
-  #search-bar {
-      width: 80%;
+  form {
+    width: 90%;
   }
+}
 
-  form input, 
-  form textarea, 
-  form select {
-      font-size: 14px;
-  }
+.dark-theme {
+  background: linear-gradient(to bottom, #333333, #111111);
+  color: #ffffff;
+}
+
+.dark-theme header {
+  background: linear-gradient(to right, #111111, #333333);
+  color: #ffffff;
+}
+
+.dark-theme #theme-toggle {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.dark-theme #theme-toggle:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+.dark-theme form {
+  background: #222222;
+}
+
+.dark-theme form input,
+.dark-theme form select,
+.dark-theme form textarea {
+  background: #333333;
+  color: #ffffff;
+}
+
+.dark-theme footer {
+  background: #111111;
+  color: #ffffff;
 }

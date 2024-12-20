@@ -1,116 +1,90 @@
 {
   "services": [
     {
-      "id": "1",
-      "name": "oil change",
-      "price": "50",
-      "duration": "40 minutes"
+      "id": 1,
+      "name": "Oil Change",
+      "price": 50,
+      "duration": "40 minutes",
+      "image": "REMINDER _ Don't Skip Regular Oil Changes  It's the lifeblood of car's engine.jpeg"
     },
     {
-      "id": "2",
-      "name": "tire replacement",
-      "price": "200",
-      "duration": "1 hour"
+      "id": 2,
+      "name": "Tire Replacement",
+      "price": 100,
+      "duration": "1 hour",
+      "image": "Darmstadt _ Hessen_ Mann bei Reifenwechsel von Sattelzug erwischt und getötet.jpeg"
     },
     {
-      "id": "3",
-      "name": "brake inspection",
-      "price": "30",
-      "duration": "20 minutes"
+      "id": 3,
+      "name": "Brake Inspection",
+      "price": 300,
+      "duration": "20 minutes",
+      "image": "Never Ignore a Brake Warning Light on the Dashboard.jpeg"
     },
     {
-      "id": "4",
-      "name": "battery replacement",
-      "price": "100",
-      "duration": "30 minutes"
+      "id": 4,
+      "name": "Battery Replacement",
+      "price": 500,
+      "duration": "30 minutes",
+      "image": "Can You Revive an Old Car Battery_.jpeg"
     },
     {
-      "id": "5",
-      "name": "oil flush",
-      "price": "70",
-      "duration": "45 minutes"
+      "id": 5,
+      "name": "Oil Flush",
+      "price": 70,
+      "duration": "45 minutes",
+      "image": "Oil Additive for Car Engine 60ml Catalytic Converter Cleaner Engine Flush Cleaner Emissions System.jpeg"
     },
     {
-      "id": "6",
-      "name": "Engine diagnostics",
-      "price": "150",
-      "duration": "1 hour"
+      "id": 6,
+      "name": "Engine Diagnostics",
+      "price": 150,
+      "duration": "1 hour",
+      "image": "Porsche's Idea for a Six-Stroke Internal Combustion Engine Looks Brilliant.jpeg"
     }
   ],
   "appointments": [
     {
-      "id": "1",
-      "service_id": "1",
+      "id": 1,
+      "service_id": 1,
       "date": "2024-12-20",
       "time": "10:00 AM",
       "customer": "Lazarus Weston"
     },
     {
-      "id": "2",
-      "service_id": "2",
+      "id": 2,
+      "service_id": 2,
       "date": "2024-12-20",
       "time": "11:00 AM",
       "customer": "Happiness Maina"
     },
     {
-      "id": "3",
-      "service_id": "3",
+      "id": 3,
+      "service_id": 3,
       "date": "2024-12-20",
       "time": "12:00 PM",
       "customer": "Jaimie Fraer"
     },
     {
-      "id": "4",
-      "service_id": "4",
+      "id": 4,
+      "service_id": 4,
       "date": "2024-12-20",
       "time": "1:00 PM",
-      "customer": "Frank  Mcneill"
+      "customer": "Frank McNeill"
     },
     {
-      "id": "1734590308106",
-      "service_id": "4",
-      "service_name": "battery replacement - $100 (30 minutes)",
-      "date": "2022-12-21",
-      "time": "10:00",
-      "customer": "maina"
-    }
-  ],
-  "reviews": [
-    {
-      "id": "1",
-      "serviceid": "1",
-      "review": "great break inspection!very thorough and professional",
-      "rating": "5"
-    },
-    {
-      "id": "2",
-      "serviceid": "2",
-      "review": "excellent service, very friendly and helpful",
-      "rating": "5"
-    },
-    {
-      "id": "3",
-      "serviceid": "3",
-      "review": "excellent service, very friendly and helpful",
-      "rating": "5"
-    },
-    {
-      "id": "4",
-      "serviceid": "4",
-      "review": "excellent service, very friendly and helpful",
-      "rating": "5"
-    },
-    {
-      "id": "1734590434077",
-      "serviceid": "3",
-      "review": "fantastic ",
-      "rating": "2"
+      "id": "03a2",
+      "service_id": 2,
+      "serviceName": "Tire Replacement",
+      "customer": "maian",
+      "date": "2024-12-20",
+      "time": "9:00 AM"
     }
   ],
   "company": {
     "name": "Happy Auto Services",
-    "tagline": "professional Auto Care You Can Trust",
-    "address": "123 Mechanic street",
+    "tagline": "Professional Auto Care You Can Trust",
+    "address": "123 Mechanic Street",
     "hours": {
       "monday": "9am-5pm",
       "tuesday": "9am-5pm",
@@ -126,25 +100,44 @@
       "id": 1,
       "name": "Mike Johnson",
       "title": "Master Technician",
-      "specialties": ["Engine Repair", "Diagnostics"],
-      "certifications": ["ASE Master Technician", "BMW Certified"],
-      "yearsExperience": 15
+      "specialties": [
+        "Engine Repair",
+        "Diagnostics"
+      ],
+      "certifications": [
+        "ASE Master Technician",
+        "BMW Certified"
+      ],
+      "years_experience": 15,
+      "image": "Celebrating Handsome Fellas_ A Ranker Collection of 39 Lists.jpeg"
     },
     {
       "id": 2,
       "name": "Sarah Martinez",
       "title": "Service Manager",
-      "specialties": ["Customer Service", "Service Planning"],
-      "certifications": ["Automotive Service Excellence (ASE)"],
-      "yearsExperience": 8
+      "specialties": [
+        "Customer Service",
+        "Service Planning"
+      ],
+      "certifications": [
+        "Automotive Service Excellence (ASE)"
+      ],
+      "years_experience": 8,
+      "image": "letty ortiz.jpeg"
     },
     {
       "id": 3,
       "name": "David Chen",
       "title": "Brake Specialist",
-      "specialties": ["Brake Systems", "Suspension"],
-      "certifications": ["ASE Brake Specialist"],
-      "yearsExperience": 10
+      "specialties": [
+        "Brake Systems",
+        "Suspension"
+      ],
+      "certifications": [
+        "ASE Brake Specialist"
+      ],
+      "years_experience": 10,
+      "image": "david gandy.jpeg"
     }
   ],
   "promotions": [
@@ -152,21 +145,21 @@
       "id": 1,
       "title": "Spring Maintenance Special",
       "description": "Get 10% off any maintenance service over $100",
-      "validUntil": "2024-05-31",
-      "discountType": "percentage",
-      "discountAmount": 10
+      "valid_until": "2024-05-31",
+      "discount_type": "percentage",
+      "discount_amount": 10
     },
     {
       "id": 2,
       "title": "New Customer Discount",
       "description": "First-time customers receive $25 off any service",
-      "validUntil": "2024-12-31",
-      "discountType": "fixed",
-      "discountAmount": 25
+      "valid_until": "2024-12-31",
+      "discount_type": "fixed",
+      "discount_amount": 25
     }
   ],
   "available_slots": {
-    "timeSlots": [
+    "time_slots": [
       "8:00 AM",
       "9:00 AM",
       "10:00 AM",
@@ -176,7 +169,7 @@
       "3:00 PM",
       "4:00 PM"
     ],
-    "requiredInfo": [
+    "required_info": [
       "name",
       "phone",
       "email",
@@ -187,5 +180,22 @@
       "preferred_date",
       "preferred_time"
     ]
-  }
+  },
+  "reviews": [
+    {
+      "id": 1,
+      "service": "oilchange",
+      "text": "Quick and efficient service. Highly recommended!",
+      "rating": 5,
+      "customer_name": "Emily Davis",
+      "timestamp": "2024-12-20T14:30:00Z"
+    },
+    {
+      "id": "68af",
+      "service": "Oil change",
+      "serviceName": "Oil Change",
+      "text": "wow",
+      "rating": "4"
+    }
+  ]
 }

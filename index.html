@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +8,8 @@
 <body>
     <header>
         <div class="header-top">
-            <h1>Auto Repair Shop</h1>
+            <h1>Happy Auto Services</h1>
+            <p>Professional Auto Care You Can Trust</p>
             <button id="theme-toggle">🌙</button>
         </div>
         <img src="machanic.jpeg" alt="mechanic at work">
@@ -19,25 +19,26 @@
     </header>
 
     <main>
+       
         <section id="service-container">
             <h2>Our Services</h2>
-            <div class="service-controls">
-                <div class="price-filter">
-                    <label>Max Price: $<span id="price-value">200</span></label>
-                    <input type="range" id="price-range" min="0" max="200" value="200">
-                </div>
-                <div class="sort-container">
-                    <select id="sort-services">
-                        <option value="name">Sort by Name</option>
-                        <option value="price">Sort by Price</option>
-                        <option value="duration">Sort by Duration</option>
-                    </select>
-                </div>
-            </div>
-            <img src="Car repair.jpeg" alt="car repair shop">
+            <img src="" alt="car repair shop">
             <div class="service-list"></div>
         </section>
 
+      
+        <section id="staff-container">
+            <h2>Meet Our Staff</h2>
+            <div class="staff-list"></div>
+        </section>
+
+      
+        <section id="promotions-container">
+            <h2>Current Promotions</h2>
+            <div class="promotions-list"></div>
+        </section>
+
+      
         <section id="form-container">
             <h2>Book an Appointment</h2>
             <form id="appointment-form">
@@ -49,17 +50,20 @@
                 <label for="customer-name">Your Name:</label>
                 <input type="text" id="customer-name" placeholder="Enter your name" required>
 
-                <label for="appointment-date">Date:</label>
-                <input type="date" id="appointment-date" required>
+                <label for="preferred-date">Preferred Date:</label>
+                <input type="date" id="preferred-date" required>
 
-                <label for="appointment-time">Time:</label>
-                <input type="time" id="appointment-time" required>
+                <label for="preferred-time">Preferred Time:</label>
+                <select id="preferred-time" required>
+                    <option value="" disabled selected>Select a time</option>
+                </select>
 
                 <button type="submit">Book Appointment</button>
             </form>
             <div class="appointment-list"></div>
         </section>
 
+      
         <section id="review-container">
             <h2>Customer Reviews</h2>
             <div class="review-list"></div>
@@ -82,11 +86,12 @@
         </section>
     </main>
 
+ 
     <footer>
         <section id="contact-container">
             <h2>Contact Us</h2>
-            <img src="Suspensions-Repair-Logo.jpeg" alt="car repair shop logo">
-            <p>For inquiries or assistance, feel free to reach out:</p>
+            <p>Address: 123 Mechanic Street</p>
+            <p>Hours: Mon-Sat 9am-5pm, Sun Closed</p>
             <ul>
                 <li>
                     <strong>Email:</strong> 
